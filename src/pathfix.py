@@ -8,7 +8,7 @@ if 'lib' not in sys.path:
 if 'src' not in sys.path:
     sys.path.insert(0, 'src')
 
-import config.settings
+#import config.settings
 
 # Issue 772 - http://code.google.com/p/googleappengine/issues/detail?id=772.
 # We must keep fix_sys_path() here until it is fixed in the dev server.
