@@ -6,12 +6,10 @@ import os, unittest, time, re
 
 from src import pathfix # pyflakes:ignore
 
-from google.appengine.api import apiproxy_stub_map, datastore_file_stub, urlfetch_stub, user_service_stub 
+from google.appengine.api import apiproxy_stub_map, datastore_file_stub, urlfetch_stub, user_service_stub, mail_stub
 from google.appengine.api.memcache import memcache_stub
 from google.appengine.api.labs.taskqueue import taskqueue_stub
 from google.appengine.ext.db import NotSavedError
-
-import time
 
 APP_ID = u'test_app'
 AUTH_DOMAIN = 'gmail.com'
@@ -85,36 +83,4 @@ class GaeBaseUnitTest(unittest.TestCase):
             self.assertException(t, exception)
             
     def assertIsInstance(self, obj, typeof):
-        assertTrue(isinstance(obj, typeof))
-
-class FakeTest(GaeBaseTest):
-    """
-    only purpose is to provide a surrogate for providing global assert methods below
-    """
-    def testNothing(self):
-        pass
-
-assertMethodStealerTestCaseInstance = FakeTest(methodName='testNothing')
-
-# this approach copies every single assert* method to the global namespace so you can use them with prefixing with 'self.'
-for assertMethod in [funcName for funcName in dir(assertMethodStealerTestCaseInstance) if funcName.startswith('assert')]:
-    globals()[assertMethod] = getattr(assertMethodStealerTestCaseInstance, assertMethod)
-
-# the approach below is better for ide code completion, and some python validators (which don't check global namespace) for some reason...but tedious... 
-assertEquals = assertEqual = assertMethodStealerTestCaseInstance.assertEqual
-assertNotEquals = assertNotEqual = assertMethodStealerTestCaseInstance.assertNotEqual
-assertSuccess = assertMethodStealerTestCaseInstance.assertSuccess
-assertTrue = assertMethodStealerTestCaseInstance.assertTrue
-assertFalse = assertMethodStealerTestCaseInstance.assertFalse
-assertSuccess = assertMethodStealerTestCaseInstance.assertSuccess
-assertFailure = assertMethodStealerTestCaseInstance.assertFailure
-assertLenResultObj = assertMethodStealerTestCaseInstance.assertLenResultObj
-assertEmptyResultObj = assertMethodStealerTestCaseInstance.assertEmptyResultObj
-assertRegex = assertMethodStealerTestCaseInstance.assertRegex
-assertException = assertMethodStealerTestCaseInstance.assertException
-assertNotNull = assertMethodStealerTestCaseInstance.assertNotNull
-assertNull = assertMethodStealerTestCaseInstance.assertNull
-assertRaises = assertMethodStealerTestCaseInstance.assertRaises
-failIf = assertMethodStealerTestCaseInstance.failIf
-assertLength = assertMethodStealerTestCaseInstance.assertLength
-assertIsInstance = assertMethodStealerTestCaseInstance.assertIsInstance 
+        self.assertTrue(isinstance(obj, typeof))
