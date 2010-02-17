@@ -31,21 +31,11 @@ class GaeBaseUnitTest(unittest.TestCase):
 
         datastore = datastore_file_stub.DatastoreFileStub('MyAppId', None, None)
         apiproxy_stub_map.apiproxy.RegisterStub('datastore_v3', datastore)
-
-        user = user_service_stub.UserServiceStub()
-        apiproxy_stub_map.apiproxy.RegisterStub('user', user)
-
-        urlfetch = urlfetch_stub.URLFetchServiceStub()
-        apiproxy_stub_map.apiproxy.RegisterStub('urlfetch', urlfetch)
-
-        self.mail_api = mail_stub.MailServiceStub()
-        apiproxy_stub_map.apiproxy.RegisterStub('mail', self.mail_api)
-
-        memcache = memcache_stub.MemcacheServiceStub()
-        apiproxy_stub_map.apiproxy.RegisterStub('memcache', memcache)
-        
-        taskqueue = taskqueue_stub.TaskQueueServiceStub()
-        apiproxy_stub_map.apiproxy.RegisterStub('taskqueue', self.task_api)
+        apiproxy_stub_map.apiproxy.RegisterStub('user', user_service_stub.UserServiceStub())
+        apiproxy_stub_map.apiproxy.RegisterStub('urlfetch', urlfetch_stub.URLFetchServiceStub())
+        apiproxy_stub_map.apiproxy.RegisterStub('mail', mail_stub.MailServiceStub())
+        apiproxy_stub_map.apiproxy.RegisterStub('memcache', memcache_stub.MemcacheServiceStub())
+        apiproxy_stub_map.apiproxy.RegisterStub('taskqueue', taskqueue_stub.TaskQueueServiceStub())
         
     def assertLength(self, length, collection):
         self.assertEquals(length, len(collection))
