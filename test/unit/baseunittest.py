@@ -17,7 +17,7 @@ APP_ID = u'test_app'
 AUTH_DOMAIN = 'gmail.com'
 LOGGED_IN_USER = 'mary@gmail.com'  # set to '' for no logged in user
 
-class GaeBaseTest(unittest.TestCase):
+class GaeBaseUnitTest(unittest.TestCase):
     def setUp(self):
         os.environ['TZ'] = 'UTC'
         time.tzset()
