@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import os
 
-if 'lib' not in sys.path:
-    sys.path.insert(0, 'lib')
+libpath = os.path.join(os.path.dirname(__file__), '../lib')
+srcpath = os.path.join(os.path.dirname(__file__), '../src')
 
-if 'src' not in sys.path:
-    sys.path.insert(0, 'src')
+if libpath not in sys.path:
+    sys.path.insert(0, libpath)
 
-#import config.settings
+if srcpath not in sys.path:
+    sys.path.insert(0, srcpath)
 
 # Issue 772 - http://code.google.com/p/googleappengine/issues/detail?id=772.
 # We must keep fix_sys_path() here until it is fixed in the dev server.
