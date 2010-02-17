@@ -35,11 +35,8 @@ handlers:
   login: admin
 
 # scheduled tasks
-- url: /tasks/send
-  script: src/router.py
-  login: admin
 
-# dynamic behaviors
+# dynamic stuff
 - url: .*
   script: src/router.py
 
