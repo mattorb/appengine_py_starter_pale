@@ -3,8 +3,8 @@
 import sys
 import os
 
-libpath = os.path.join(os.path.dirname(__file__), '../lib')
-srcpath = os.path.join(os.path.dirname(__file__), '../src')
+libpath = os.path.join(os.path.dirname(__file__), '../../lib')
+srcpath = os.path.join(os.path.dirname(__file__), '../../src')
 
 if libpath not in sys.path:
     sys.path.insert(0, libpath)
