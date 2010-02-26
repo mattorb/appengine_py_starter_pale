@@ -2,12 +2,12 @@ import random
 import unittest
 import baseunittest
 
-class TestSequenceFunctions(baseunittest.GaeBaseUnitTest):
+class TestExample(baseunittest.GaeBaseUnitTest):
     def setUp(self):
-        super(TestFetchAndParse, self).setUp()
+        super(TestExample, self).setUp()
 
     def tearDown(self):
-        super(TestFetchAndParse, self).tearDown()
+        super(TestExample, self).tearDown()
 
     def testshuffle(self):
         seq = range(10)
