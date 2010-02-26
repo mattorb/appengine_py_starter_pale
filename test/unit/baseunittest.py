@@ -4,7 +4,7 @@
 
 import os, unittest, time, re
 
-from src import pathfix # pyflakes:ignore
+from src.utils import pathfix # pyflakes:ignore
 
 from google.appengine.api import apiproxy_stub_map, datastore_file_stub, urlfetch_stub, user_service_stub, mail_stub
 from google.appengine.api.memcache import memcache_stub
